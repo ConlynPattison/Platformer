@@ -56,11 +56,18 @@ public class LevelParser : MonoBehaviour
             for (int column = 0; column < letters.Length; column++)
             {
                 var letter = letters[column];
-                Instantiate(rockPrefab, new Vector3(column, row, 0), Quaternion.identity);
+                Vector3 position = new Vector3(column + 0.5f, row + 0.5f, -0.5f);
+                if (letter == 'x')
+                    Instantiate(rockPrefab, position, Quaternion.identity);
+                else if (letter == '?')
+                    Instantiate(questionBoxPrefab, position, Quaternion.identity);
+                else if (letter == 'b')
+                    Instantiate(brickPrefab, position, Quaternion.identity);
+                else if (letter == 's')
+                    Instantiate(stonePrefab, position, Quaternion.identity);
                 // Todo - Instantiate a new GameObject that matches the type specified by letter
                 // Todo - Position the new GameObject at the appropriate location by using row and column
                 // Todo - Parent the new GameObject under levelRoot
-                // column++;
             }
             row++;
         }
