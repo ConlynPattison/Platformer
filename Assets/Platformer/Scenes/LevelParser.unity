@@ -460,6 +460,7 @@ GameObject:
   - component: {fileID: 1497765093}
   - component: {fileID: 1497765095}
   - component: {fileID: 1497765094}
+  - component: {fileID: 1497765096}
   m_Layer: 5
   m_Name: Timer Text
   m_TagString: Untagged
@@ -586,6 +587,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497765092}
   m_CullTransparentMesh: 1
+--- !u!114 &1497765096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497765092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a50f1ca217278c48a2cce5d879be145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 1497765094}
 --- !u!1 &1658349393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,6 +1245,10 @@ PrefabInstance:
     - target: {fileID: 4832503197759673181, guid: 594e62b35ed4145db84af66bca44933c, type: 3}
       propertyPath: m_Name
       value: Test Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832503197759673181, guid: 594e62b35ed4145db84af66bca44933c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
