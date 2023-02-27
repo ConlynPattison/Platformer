@@ -34,7 +34,7 @@ public class DemoCharacterController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             _rbody.AddForce(Vector3.up * jumpBoost, ForceMode.Force);
-        }s
+        }
 
         Color lineColor = isGrounded ? Color.green : Color.red;
         Debug.DrawLine(transform.position, transform.position + Vector3.down * 0.1f, lineColor);
