@@ -11,10 +11,12 @@ public class DemoCharacterController : MonoBehaviour
     public bool isGrounded;
     
     private Rigidbody _rbody;
+    private Animator _animator;
     // Start is called before the first frame update
     void Start()
     {
         _rbody = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -24,7 +26,7 @@ public class DemoCharacterController : MonoBehaviour
         _rbody.velocity = new Vector3(Mathf.Clamp(_rbody.velocity.x, -maxSpeed, maxSpeed), _rbody.velocity.y,
             _rbody.velocity.z);
 
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.15f);
         
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -37,6 +39,9 @@ public class DemoCharacterController : MonoBehaviour
         }
 
         Color lineColor = isGrounded ? Color.green : Color.red;
-        Debug.DrawLine(transform.position, transform.position + Vector3.down * 0.1f, lineColor);
+        Debug.DrawLine(transform.position, transform.position + Vector3.down * 0.15f, lineColor);
+
+        float speed = _rbody.velocity.magnitude;
+        _animator.SetFloat("Speed", speed);
     }
 }
