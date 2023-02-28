@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Brick
   - Question
+  - Coin
+  - Flag
+  - Water
   layers:
   - Default
   - TransparentFX
