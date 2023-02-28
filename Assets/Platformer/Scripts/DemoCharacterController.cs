@@ -16,6 +16,8 @@ public class DemoCharacterController : MonoBehaviour
     private Rigidbody _rbody;
     private Animator _animator;
     private bool _hitHead;
+    private bool _isBoosted;
+    private float _maxRun;
     private Vector3 _startPos;
     // Start is called before the first frame update
     void Start()
@@ -23,12 +25,14 @@ public class DemoCharacterController : MonoBehaviour
         _rbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
         _startPos = transform.position;
+        _maxRun = maxSpeed;
     }
 
     void Update()
     {
         var position = transform.position;
         float horizontalAxis = Input.GetAxis("Horizontal");
+        
         _rbody.velocity += horizontalAxis * Time.deltaTime * acceleration * Vector3.right;
         _rbody.velocity = new Vector3(Mathf.Clamp(_rbody.velocity.x, -maxSpeed, maxSpeed), _rbody.velocity.y,
             _rbody.velocity.z);
@@ -48,6 +52,17 @@ public class DemoCharacterController : MonoBehaviour
         {
             _rbody.AddForce(Vector3.up * jumpBoost, ForceMode.Force);
         }
+
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        { 
+            _isBoosted = true;
+        }
+        else
+        {
+            _isBoosted = false;
+        }
+
+        maxSpeed = _isBoosted ? _maxRun + 3f : _maxRun;
 
         Color lineColor = isGrounded ? Color.green : Color.red;
         Color headHitColor = _hitHead ? Color.green : Color.red;
